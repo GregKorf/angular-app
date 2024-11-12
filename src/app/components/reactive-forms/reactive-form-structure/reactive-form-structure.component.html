@@ -1,0 +1,43 @@
+<div class="d-flex flex-column">
+    <h5>New Person Form</h5>
+    <form [formGroup]="userForm" class="d-flex flex-column">
+        <mat-form-field>
+            <mat-label for="">First Name</mat-label>
+            <input matInput type="text" formControlName="givenName">
+            <mat-error>First Name is required</mat-error>
+        </mat-form-field>
+        @if(userForm.get("givenName")?.invalid && userForm.get("givenName")?.touched){
+            <span>Field is required</span>
+        }
+        <mat-form-field>
+            <mat-label for="">Last Name</mat-label>
+            <input matInput type="text" formControlName="surName">
+            <mat-error>Last Name is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="">Age</mat-label>
+            <input matInput type="text" formControlName="age">
+            <mat-error>Age is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="">Email</mat-label>
+            <input matInput type="text" formControlName="email">
+            <mat-error>Email is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="">Address</mat-label>
+            <mat-select formControlName="address">
+                <mat-option value="road1">Road 1</mat-option>
+                <mat-option value="road2">Road 2</mat-option>
+            </mat-select>
+            <mat-error>Address is required</mat-error>
+        </mat-form-field>
+    </form>
+    <button mat-flat-button 
+        [disabled]="userForm.invalid"
+        (click)="onSubmit(userForm.value)"
+    >
+        Submit
+    </button>
+
+</div>
